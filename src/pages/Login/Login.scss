@@ -1,0 +1,71 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+
+    form {
+        //border: 1px solid rgb(157, 155, 134);
+        font-size: 1.2rem;
+        border: 2px solid purple;
+        padding: 30px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+
+        h1 {
+            color: purple;
+            text-decoration: underline;
+        }
+
+        div {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+            label {
+                margin-right: 1rem;
+                font-size: 1.4rem;
+                font-style: italic;
+                text-decoration: underline;
+            }
+
+            input {
+                margin: 10px 0;
+                border: none;
+                padding: 15px;
+                font-size: 1.2rem;
+                color: purple;
+            }
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            outline: none;
+            border: none;
+            color: purple;
+            background-color: rgb(233, 197, 233);
+            cursor: pointer;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -moz-transition: all .2s;
+            -ms-transition: all .2s;
+            -o-transition: all .2s;
+
+            &:hover {
+
+                color: rgb(233, 197, 233);
+                background-color: purple;
+            }
+        }
+    }
+}

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "./CreateEmployee.scss";
+// import "./CreateEmployee.scss";
 import toast from "react-hot-toast";
-const CreateEmployee = () => {
+const UpdateEmployee = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  console.log(id);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +17,19 @@ const CreateEmployee = () => {
     gender: "M",
     course: [],
   });
+  useEffect(() => {
+    const fetchEmployeeDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/employee/getIndividualEmployeeDetails/${id}`
+        );
+        setFormData(response.data);
+      } catch (error) {
+        console.log("Error fetching employee details:", error);
+      }
+    };
+    fetchEmployeeDetails();
+  }, [id]);
   const handleChange = async (e) => {
     const { name, value, type, checked } = e.target;
     console.log(e.target.value);
@@ -31,23 +46,23 @@ const CreateEmployee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    for (const key in formData) {
-      if (!formData[key]) {
-        toast.error(`Please fill in ${key}.`);
-        return;
-      }
-    }
-    if (formData.course.length === 0) {
-      toast.error("Please select at least one course.");
-      return;
-    }
+    // for (const key in formData) {
+    //   if (!formData[key]) {
+    //     toast.error(`Please fill in ${key}.`);
+    //     return;
+    //   }
+    // }
+    // if (formData.course.length === 0) {
+    //   toast.error("Please select at least one course.");
+    //   return;
+    // }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/signup",
+      const response = await axios.put(
+        `http://localhost:8080/api/employee/updateEmployeeDetails/${id}`,
         formData
       );
-      console.log("User registered", response);
+      console.log("User Updated ", response);
       console.log(formData);
       toast.success(response.data.message);
       setFormData({
@@ -59,9 +74,9 @@ const CreateEmployee = () => {
         gender: "",
         course: [],
       });
-      navigate("/login");
+      navigate("/employee-details");
     } catch (error) {
-      console.log("Error in registration", error.response.data.message);
+      console.log("Error in Updating employee", error.response.data.message);
       toast.error(error.response.data.message);
     } finally {
       setLoading(false);
@@ -70,7 +85,7 @@ const CreateEmployee = () => {
   return (
     <div className="createEmployee-container">
       <form onSubmit={handleSubmit}>
-        <h1>Create Employee</h1>
+        <h1>Update Employee</h1>
         <div>
           <label>Name</label>
           <input
@@ -180,10 +195,10 @@ const CreateEmployee = () => {
             <label>BSC</label>
           </span>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   );
 };
 
-export default CreateEmployee;
+export default UpdateEmployee;

@@ -26,6 +26,34 @@
                 &:hover {
                     color: gray;
                 }
+
+
+            }
+        }
+
+        button {
+            padding: 5px;
+            font-size: 1.2rem;
+            border: none;
+            color: purple;
+            font-weight: bold;
+            background-color: rgb(233, 197, 233);
+            cursor: pointer;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -moz-transition: all .2s;
+            -ms-transition: all .2s;
+            -o-transition: all .2s;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+
+
+            &:hover {
+                color: rgb(233, 197, 233);
+                background-color: purple;
             }
         }
     }

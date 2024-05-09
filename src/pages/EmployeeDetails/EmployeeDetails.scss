@@ -1,0 +1,68 @@
+.employee-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        align-items: start;
+        // height: 100vh;
+
+        thead {
+            tr {
+                font-size: 1.2rem;
+                font-style: italic;
+
+
+
+
+
+                th {
+                    padding: 5px;
+                    background-color: rgb(233, 197, 233);
+                    color: purple;
+                }
+            }
+        }
+
+        tbody {
+
+            &:hover {
+                color: purple;
+            }
+
+            tr {
+                justify-content: center;
+                text-align: center;
+
+                &:hover {
+                    background-color: rgb(233, 197, 233);
+                    color: purple;
+                }
+
+                td {}
+
+                .action-buttons {
+                    justify-content: center;
+                    // align-items: center;
+                    text-align: center;
+
+                    svg {
+                        cursor: pointer;
+                        margin: 5px 5px;
+                        font-size: 20px;
+                        color: #333;
+                    }
+                }
+            }
+        }
+    }
+}
